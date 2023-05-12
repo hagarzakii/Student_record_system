@@ -1,3 +1,28 @@
 #include "authentication.h"
-
+#include <string.h>
 // Check the username and password entered by the user and determine whether the user is an admin or a student.
+
+char adminPassword[] = "1234";
+int attempts = 3;
+
+void is_admin(){
+	    char password[20];
+		
+        while (attempts >0) {
+        printf("Enter admin password: ");
+        scanf("%s", password);
+          if (strcmp(password, adminPassword) == 0) {
+            printf("Access granted!\n");
+            break;
+        } else {
+            printf("Incorrect password. %d attempts remaining.\n", attempts -1);
+            attempts--;
+        }
+    }
+        if (attempts == 0) {
+        printf("Maximum attempts reached.\n Exiting");
+        return;
+    }
+	}
+    
+    
