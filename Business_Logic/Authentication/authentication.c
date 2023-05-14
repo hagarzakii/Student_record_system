@@ -24,5 +24,30 @@ void is_admin(){
         return;
     }
 	}
-    
+    void check_user() {
+		//we need counter for number of students
+	int id;
+    char password[20];
+	
+	printf("\nEnter your ID: ");
+    scanf("%d", &id);
+
+    Student* user = NULL;
+    for (int i = 0; i < numStudents; i++) {
+        if (students[i]->id == id) {
+            user = students[i];
+            break;
+        }
+    }
+        if (user == NULL) {
+        printf("User not found\n");
+        return;
+    }
+    printf("Enter your password: ");
+    scanf("%s", password);
+
+    if (strcmp(password, user->password) != 0) {
+        printf("Incorrect password\n");
+        return;
+    }
     

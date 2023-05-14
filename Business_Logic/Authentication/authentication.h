@@ -3,4 +3,6 @@
 
 void is_admin();
 
+void check_user();
+
 #endif //STUDENTRECORDSYSTEM_AUTHENTICATION_H
