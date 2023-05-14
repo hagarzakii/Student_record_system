@@ -5,10 +5,10 @@
 #include <string.h>
 
 struct node {
-    // Define the node structure here
+    // Define the node structure here.
 };
 
-extern char admin_password[50];
+extern char admin_password[30];
 
 void change_admin_password(char current_password[], char new_password[]);
 
