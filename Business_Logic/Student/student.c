@@ -117,7 +117,7 @@ void edit_student()
                break;
             case 5:
                printf("Enter the updated phone number : ");
-               scanf("%f", st[j].phone_number);
+               scanf("%d", st[j].phone_number);
                break;
          }
          printf("Records updated successfully");
