@@ -69,7 +69,7 @@ void edit_student()
  
    for (int j = 0; j < i; j++)
    {
-      if (temp == st[j].id_number && z==st[i].s_pass)
+      if (temp == st[j].id_number && z==st[j].s_pass)
       {
          printf("1. First Name\n"
                 "2. Last Name\n"
