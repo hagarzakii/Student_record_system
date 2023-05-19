@@ -1,8 +1,17 @@
 #include "admin.h"
 
-char admin_password[30] = "1234";  // default admin password "1234"
 
-void change_admin_password(char current_password[], char new_password[]) {
+
+void change_admin_password() {
+    printf("Enter current password : ");
+    scanf("%s",current_password);
+  printf("Enter the new password : ");
+    scanf("%s",new_password);
+    if (strlen(new_password) < MIN_PASSWORD_LENGTH) {
+        printf("Error: password must be at least %d characters long.\n", MIN_PASSWORD_LENGTH);
+        return;
+    }
+
     if (strcmp(current_password, admin_password) != 0) {
         printf("Incorrect current password. Password not changed.\n");
         return;
