@@ -20,6 +20,44 @@ void change_admin_password() {
     }
 
 =======
+/* i think this func is better
+void add_byadmin(){
+    int c;
+    printf("enter number of students you need to add\n");
+    scanf("%d",&c);
+    struct student *s;
+    s=(struct student *) malloc (sizeof(struct student));
+    
+    printf("now you enter the details of new students:\n");
+
+    for(int i=0;i<c;++i)
+    {
+        printf("enter the first name:");
+        scanf("%s",s[i].name);
+         printf("enter the last name:");
+        scanf("%s",s[i].last_name);
+        printf("enter ID number:");
+        scanf("%d",&s[i].id_number);
+        printf("enter student GPA:");
+        scanf("%f",&s[i].gpa);
+         printf("enter student's new password:");
+        scanf("%u",&s[i].pass);
+         printf("\n");
+    }
+        printf("\n details of all the new students are:\n");
+
+    for(i=0;i<c;++i)
+    {
+        printf("the student frist name is :%s\n",s[i].name);
+        printf("the student last name is :%s\n",s[i].last_name);
+        printf("the student ID number is:%d\n",s[i].id_number);
+        printf("the student GPA is:%.2f\n",s[i].gpa);
+        printf("the student phone number is:%d\n",s[i].pass);
+        printf("\n");
+    }
+    return 0;
+}*/
+
 void addstudent()
 {
    printf("Add the student's details\n\n");
