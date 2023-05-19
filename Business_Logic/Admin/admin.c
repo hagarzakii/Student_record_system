@@ -52,7 +52,7 @@ void add_byadmin(){
         printf("the student last name is :%s\n",s[i].last_name);
         printf("the student ID number is:%d\n",s[i].id_number);
         printf("the student GPA is:%.2f\n",s[i].gpa);
-        printf("the student phone number is:%d\n",s[i].pass);
+        printf("the student phone number is:%d\n",s[i].s_pass);
         printf("\n");
     }
     return 0;
