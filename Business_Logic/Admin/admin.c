@@ -1,4 +1,8 @@
 #include "admin.h"
+void addstudent();
+void delete_student();
+void edit_student();
+void id_number();
 
 char admin_password[30] = "1234";  // default admin password "1234"
 
