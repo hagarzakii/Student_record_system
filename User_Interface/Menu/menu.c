@@ -14,6 +14,7 @@ switch(na){
     scanf("%s",st[a].user_name);
     printf("please put your password :\n");
     scanf("%d",&st[a].pass);
+   //check admin function   
     break;
 
       case 2:
@@ -22,6 +23,7 @@ switch(na){
       printf("2. Update the details of an student\n");
       printf("3. Exit\n");
       scanf("%d", &t);
+     // check student function
       break;
 
      default: break;
