@@ -49,7 +49,7 @@ void is_admin(){
     printf("Enter your password: ");
     scanf("%s", password);
 
-    if (strcmp(password, user->password) != 0) {
+    if (strcmp(password, user->s_pass) != 0) {
         printf("Incorrect password\n");
         return;
     }
