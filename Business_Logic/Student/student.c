@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void addstudent();
-void delete_student();
 void edit_student();
 void id_number();
 int i = 0;
@@ -14,33 +12,27 @@ int i = 0;
    int id_number;
    float GPA;
    int phone_number;
+  int s_pass;
 } st[500];
 //struct student st[500]={"amr","eziza",1000,2.79,01000};
 int main()
 {
    int t;
       printf("Enter the task that you want to perform\n");
-      printf("1. Add a new student detail\n");
-      printf("2. Find the details of a student using ID number\n");
-      printf("3. Delete the details of an student\n");
-      printf("4. Update the details of an student\n");
-      printf("5. Exit\n");
+      printf("1. Find the details of a student using ID number\n");
+      printf("2. Update the details of an student\n");
+      printf("3. Exit\n");
       scanf("%d", &t);
       switch (t)
       {
+      
       case 1:
-         addstudent();
-         break;
-      case 2:
           id_number();
          break;
-         case 3:
-        delete_student();
-         break;
-      case 4:
+      case 2:
          edit_student();
          break;
-         case 5:
+         case 3:
          printf("successful exit");
          break;
       default:
@@ -49,53 +41,42 @@ int main()
    return 0;
 }
 
-void addstudent()
-{
-   printf("Add the student's details\n\n");
-   printf("Enter the first name of the student\n");
-   scanf("%s", st[i].firstName);
-   printf("Enter the last name of the student\n");
-   scanf("%s", st[i].lastName);
-   printf("Enter the ID number of the student\n");
-   scanf("%d", &st[i].id_number);
-   printf("Enter the GPA of the student\n");
-   scanf("%f", &st[i].GPA);
-   printf("Enter phone number of the student\n");
-   scanf("%d", &st[i].phone_number);
-   printf("Records saved successfully");
-}
-void delete_student()
+void id_number()
 {
    int temp;
+   int z;
    printf("Enter the ID number of the student\n");
    scanf("%d", &temp);
-   for (int j = 1; j <= i; j++)
-   {
-      if (temp == st[j].id_number)
+   printf("Enter the password number of the student\n");
+   scanf("%d", &z);
+      if (temp == st[i].id_number && z==st[i].s_pass)
       {
-         for (int k = j; k < 499; k++)
-         {
-            st[k] = st[k + 1];
-         }
-        i--;
+         printf("The student's details are\n");
+         printf("The first name is %s\n", st[i].firstName);
+         printf("The last name is %s\n", st[i].lastName);
+         printf("The GPA is %f\n", st[i].GPA);
+         printf("The phone number is %d\n", st[i].phone_number);
       }
-   }
-   printf("The entered student's records deleted successfully");
-}
+ }
 void edit_student()
 {
    int temp;
+   int z;
    printf("Enter the ID number of the student\n");
    scanf("%d", &temp);
+   printf("Enter the password number of the student\n");
+   scanf("%d", &z);
+ 
    for (int j = 0; j < i; j++)
    {
-      if (temp == st[j].id_number)
+      if (temp == st[j].id_number && z==st[j].s_pass)
       {
          printf("1. First Name\n"
                 "2. Last Name\n"
                 "3. ID Number\n"
                 "4. GPA\n"
-                "5.phone number\n");
+                "5. phone number\n"
+                "6. password\n")
          int c;
          scanf("%d", &c);
          switch(c) {
@@ -117,25 +98,13 @@ void edit_student()
                break;
             case 5:
                printf("Enter the updated phone number : ");
-               scanf("%d", st[j].phone_number);
+               scanf("%f", st[j].phone_number);
+               break;
+           case 6:
+               printf("Enter the updated password : ");
+               scanf("%f", st[j].s_student);
                break;
          }
          printf("Records updated successfully");
       }
    }
-}
-void id_number()
-{
-   int temp;
-   printf("Enter the ID number of the student\n");
-   scanf("%d", &temp);
-      if (temp == st[i].id_number)
-      {
-         printf("The student's details are\n");
-         printf("The first name is %s\n", st[i].firstName);
-         printf("The last name is %s\n", st[i].lastName);
-         printf("The GPA is %f\n", st[i].GPA);
-         printf("The phone number is %d\n", st[i].phone_number);
-      }
- }
-

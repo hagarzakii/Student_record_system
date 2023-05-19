@@ -1,7 +1,5 @@
 #ifndef STUDENTRECORDSYSTEM_STUDENT_H
 #define STUDENTRECORDSYSTEM_STUDENT_H
-void addstudent();
-void delete_student();
 void edit_student();
 void id_number();
  struct student
@@ -11,6 +9,7 @@ void id_number();
    int id_number;
    float GPA;
    int phone_number;
+  int s_pass;
 } st[500];
 
 #endif //STUDENTRECORDSYSTEM_STUDENT_H
