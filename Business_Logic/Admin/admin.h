@@ -3,6 +3,10 @@
 
 #include <stdio.h>
 #include <string.h>
+void addstudent();
+void delete_student();
+void edit_student();
+void id_number();
 
 struct node {
     // Define the node structure here.
