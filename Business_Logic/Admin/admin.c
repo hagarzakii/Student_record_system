@@ -3,6 +3,8 @@ void addstudent();
 void delete_student();
 void edit_student();
 void id_number();
+void change_admin_password();
+void change_admin_password(char current_password[], char new_password[]);
 
 
 <<<<<<< HEAD
@@ -118,7 +120,9 @@ for (int i = 0; i < numstudents; i++) {
     printf("ID: %d\n", st[i].id_number);
     printf("GPA: %f\n", st[i].GPA);
 	
-    printf("Phone Number: %d\n", st[i].phone_number);
+    printf("Phone Number: %d\n", st[i].phone_number);}
+    
+    
 void change_admin_password(char current_password[], char new_password[]) {
 >>>>>>> f27831b06d6b928eccc52548a4e9e20f97c0cfc2
     if (strcmp(current_password, admin_password) != 0) {
