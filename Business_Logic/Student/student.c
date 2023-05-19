@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+void edit_student();
 void id_number();
 int i = 0;
  struct student
