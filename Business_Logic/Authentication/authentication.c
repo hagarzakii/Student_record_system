@@ -1,9 +1,12 @@
 #include "authentication.h"
 #include <string.h>
+#include <stdio.h>
+#include "student.h"
 // Check the username and password entered by the user and determine whether the user is an admin or a student.
 
 char adminPassword[] = "1234";
 int attempts = 3;
+extern int numstudents;
 
 void is_admin(){
 	    char password[20];
@@ -32,10 +35,10 @@ void is_admin(){
 	printf("\nEnter your ID: ");
     scanf("%d", &id);
 
-    Student* user = NULL;
-    for (int i = 0; i < numStudents; i++) {
-        if (students[i]->id == id) {
-            user = students[i];
+   struct student* user = NULL;
+    for (int i = 0; i < numstudents; i++) {
+        if (st[i]->id == id) {
+            user =& st[i];
             break;
         }
     }

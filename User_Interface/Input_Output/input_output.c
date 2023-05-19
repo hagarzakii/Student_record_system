@@ -1,5 +1,9 @@
 #include "input_output.h"
+#include <stdio.h>
 
+
+
+<<<<<<< HEAD
 
 void chooseAdminTask()
 {
@@ -36,6 +40,8 @@ void chooseAdminTask()
            printf("Invalid Input");
     }
 
+=======
+>>>>>>> f27831b06d6b928eccc52548a4e9e20f97c0cfc2
 }
 void chooseStudentTask()
 {
