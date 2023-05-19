@@ -37,7 +37,7 @@ void is_admin(){
 
    struct student* user = NULL;
     for (int i = 0; i < numstudents; i++) {
-        if (st[i]->id == id) {
+        if (st[i]->id_number == id) {
             user =& st[i];
             break;
         }
