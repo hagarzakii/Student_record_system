@@ -1,7 +1,7 @@
 #include "input_output.h"
 #include <stdio.h>
-#include "student.h"
-#include "admin.h"
+#include "../../Business_Logic/Admin/admin.h"
+#include "../../Business_Logic/Student/student.h"
 
 void chooseAdminTask()
 {
@@ -20,7 +20,7 @@ void chooseAdminTask()
         change_admin_password();
         break;
      case 2:
-         addstudent();
+         add_byadmin();
          break;
       case 3:
           id_number();
@@ -45,7 +45,7 @@ void chooseStudentTask()
    printf("1- Edit your details\n");
    printf("2- View your record\n");
    printf("3- Exit\n");
-   scanf("%d",&choice);
+   scanf("%d",&Studentchoice);
     switch(Studentchoice)
     {
     case 1:
@@ -60,4 +60,5 @@ void chooseStudentTask()
       default:
         printf("Invalid Input");
 
+}
 }

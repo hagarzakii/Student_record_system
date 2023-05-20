@@ -1,6 +1,6 @@
 #ifndef STUDENTRECORDSYSTEM_MEMORY_MANAGEMENT_H
 #define STUDENTRECORDSYSTEM_MEMORY_MANAGEMENT_H
 
-void free_student (Student* student);
+void free_student (struct student* Student);
 
 #endif //STUDENTRECORDSYSTEM_MEMORY_MANAGEMENT_H

@@ -68,7 +68,7 @@ void edit_yourDetail()
                break;
            case 6:
                printf("Enter the updated password : ");
-               scanf("%d", st[j].s_student);
+               scanf("%d", st[j].s_pass);
                break;
          }
          printf("Records updated successfully");

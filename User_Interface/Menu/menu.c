@@ -1,10 +1,11 @@
 #include "menu.h"
 #include <stdio.h>
-#include "authentication.h"
-#include "input_output.h"
+#include "../../Business_Logic/Authentication/authentication.h"
+#include "../Input_Output/input_output.h"
 int main(){
 int na;
 int a=0;  int t;
+while(1){
 printf("Please select number to choise you are admin or student\n" 
        "1: for admin\n"
        "2: for student\n");
@@ -25,6 +26,8 @@ switch(na){
       break;
 
      default: break;
+}
+}
 }
 
 

@@ -6,7 +6,7 @@
 #define MAX_PASSWORD_LENGTH 50
 #define MIN_PASSWORD_LENGTH 3
 
-void addstudent();
+void add_byadmin();
 void delete_student();
 void edit_student();
 void id_number();
@@ -15,7 +15,7 @@ void id_number();
 //char admin_password[MAX_PASSWORD_LENGTH] = "1234";
 char current_password[MAX_PASSWORD_LENGTH];
 char new_password[MAX_PASSWORD_LENGTH];
-extern char adminPassword[] = "1234";
+extern char adminPassword[] ;
 
 extern char admin_password[20];
 

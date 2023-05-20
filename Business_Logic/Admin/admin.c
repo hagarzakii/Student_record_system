@@ -1,11 +1,17 @@
+#include<stdio.h>
+#include <stdlib.h>
+#include "../Student/student.h"
+#include "../../Data_Access/Memory_Management/memory_management.h"
 #include "admin.h"
-#include "memory_management.h"
-#include "student.h"
+
+extern int i ;
+int numstudents=0; 
+extern char adminPassword[];
 
 void change_admin_password() {
     printf("Enter current password : ");
     scanf("%s",current_password);
-	if (strcmp(current_password, admin_password) != 0) {
+	if (strcmp(current_password, adminPassword) != 0) {
         printf("Incorrect current password. Password not changed.\n");
 	return;}
   printf("Enter the new password : ");
@@ -40,16 +46,17 @@ void add_byadmin(){
     }
         printf("\n details of all the new students are:\n");
 
-    for(i=0;i<c;++i)
+    for(int i=0;i<c;++i)
     {
-        printf("the student frist name is :%s\n",s[i].name);
-        printf("the student last name is :%s\n",s[i].last_name);
+        printf("the student frist name is :%s\n",s[i].firstName);
+        printf("the student last name is :%s\n",s[i].lastName);
         printf("the student ID number is:%d\n",s[i].id_number);
-        printf("the student GPA is:%.2f\n",s[i].gpa);
+        printf("the student GPA is:%.2f\n",s[i].GPA);
         printf("the student phone number is:%d\n",s[i].s_pass);
         printf("\n");
     }
-    return 0;
+	numstudents ++ ;
+    return ;
 }
 
 
@@ -69,7 +76,8 @@ void delete_student()
         i--;
       }
    }
-   free_student (Student[temp]);
+   numstudents --;
+   free_student (&st[temp]);
    printf("The entered student's records deleted successfully");
    return ;
 }
@@ -121,6 +129,8 @@ void id_number()
    int temp;
    printf("Enter the ID number of the student\n");
    scanf("%d", &temp);
+   for (int i=0 ; i<numstudents ; i++)
+   {
       if (temp == st[i].id_number)
       {
          printf("The student's details are\n");
@@ -128,7 +138,9 @@ void id_number()
          printf("The last name is %s\n", st[i].lastName);
          printf("The GPA is %f\n", st[i].GPA);
          printf("The phone number is %d\n", st[i].phone_number);
+		 break;
       }
+   }
  }
 
 
