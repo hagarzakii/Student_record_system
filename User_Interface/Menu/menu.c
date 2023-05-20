@@ -18,6 +18,7 @@ switch(na){
     break;
 
       case 2:
+	  printf("Welcome in student mode !\n");
 	  check_user();
 	  chooseStudentTask();
      // check student function
