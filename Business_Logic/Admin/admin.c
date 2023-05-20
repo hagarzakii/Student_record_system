@@ -1,11 +1,5 @@
 #include "admin.h"
-void addstudent();
-void delete_student();
-void edit_student();
-void id_number();
-void change_admin_password();
-void change_admin_password(char current_password[], char new_password[]);
-
+#include "memory_management.h"
 
 <<<<<<< HEAD
 
@@ -89,6 +83,7 @@ void delete_student()
         i--;
       }
    }
+   free_student (Student[temp]);
    printf("The entered student's records deleted successfully");
 }
 void edit_student()

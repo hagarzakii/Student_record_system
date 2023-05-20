@@ -4,3 +4,9 @@
  * Take care of hidden memory leaks when removing or editing student records (free memory) */
     struct student *s;
     s=(struct student *) malloc (sizeof(struct student));
+
+void free_student (Student* student){
+	
+free(student);
+
+}
