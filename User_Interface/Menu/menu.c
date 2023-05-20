@@ -1,7 +1,5 @@
-#include "menu.h"
+
 #include <stdio.h>
-#include "authentication.h"
-#include "input_output.h"
 int main(){
 int na;
 int a=0;  int t;
