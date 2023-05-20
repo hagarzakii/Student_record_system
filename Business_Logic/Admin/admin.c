@@ -1,8 +1,6 @@
 #include "admin.h"
 #include "memory_management.h"
 
-<<<<<<< HEAD
-
 void change_admin_password() {
     printf("Enter current password : ");
     scanf("%s",current_password);
@@ -13,7 +11,6 @@ void change_admin_password() {
         return;
     }
 
-=======
 /* i think this func is better
 void add_byadmin(){
     int c;
@@ -157,7 +154,6 @@ for (int i = 0; i < numstudents; i++) {
     
     
 void change_admin_password(char current_password[], char new_password[]) {
->>>>>>> f27831b06d6b928eccc52548a4e9e20f97c0cfc2
     if (strcmp(current_password, admin_password) != 0) {
         printf("Incorrect current password. Password not changed.\n");
         return;

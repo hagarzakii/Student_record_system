@@ -3,9 +3,6 @@
 #include "student.h"
 #include "admin.h"
 
-
-<<<<<<< HEAD
-
 void chooseAdminTask()
 {
     int choice;
@@ -41,8 +38,6 @@ void chooseAdminTask()
            printf("Invalid Input");
     }
 
-=======
->>>>>>> f27831b06d6b928eccc52548a4e9e20f97c0cfc2
 }
 void chooseStudentTask()
 {
