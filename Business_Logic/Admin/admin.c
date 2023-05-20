@@ -1,6 +1,4 @@
-#include "admin.h"
-#include "memory_management.h"
-#include "student.h"
+
 
 void change_admin_password() {
     printf("Enter current password : ");
