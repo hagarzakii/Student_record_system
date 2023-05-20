@@ -1,18 +1,20 @@
 #include "admin.h"
 #include "memory_management.h"
+#include "student.h"
 
 void change_admin_password() {
     printf("Enter current password : ");
     scanf("%s",current_password);
 	if (strcmp(current_password, admin_password) != 0) {
         printf("Incorrect current password. Password not changed.\n");
-        return;
+	return;}
   printf("Enter the new password : ");
     scanf("%s",new_password);
     if (strlen(new_password) < MIN_PASSWORD_LENGTH) {
         printf("Error: password must be at least %d characters long.\n", MIN_PASSWORD_LENGTH);
         return;
     }
+	}
 
 /* i think this func is better
 void add_byadmin(){
@@ -66,6 +68,7 @@ void addstudent()
    printf("Enter phone number of the student\n");
    scanf("%d", &st[i].phone_number);
    printf("Records saved successfully");
+   return ;
 }
 void delete_student()
 {
@@ -85,6 +88,7 @@ void delete_student()
    }
    free_student (Student[temp]);
    printf("The entered student's records deleted successfully");
+   return ;
 }
 void edit_student()
 {
@@ -127,6 +131,7 @@ void edit_student()
          printf("Records updated successfully");
       }
    }
+   return ;
 }
 void id_number()
 {
@@ -154,5 +159,5 @@ for (int i = 0; i < numstudents; i++) {
     printf("GPA: %f\n", st[i].GPA);
 
     printf("Phone Number: %d\n", st[i].phone_number);}
-
+return ;
 }

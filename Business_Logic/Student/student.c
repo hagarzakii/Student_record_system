@@ -22,6 +22,7 @@ void viewRecord()
          printf("The GPA is %f\n", st[i].GPA);
          printf("The phone number is %d\n", st[i].phone_number);
       }
+	  return ;
  }
 void edit_yourDetail()
 {
@@ -73,4 +74,5 @@ void edit_yourDetail()
          printf("Records updated successfully");
       }
    }
+   return ;
 }
