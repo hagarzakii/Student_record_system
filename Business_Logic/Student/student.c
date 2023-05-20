@@ -64,11 +64,11 @@ void edit_yourDetail()
                break;
             case 5:
                printf("Enter the updated phone number : ");
-               scanf("%f", st[j].phone_number);
+               scanf("%d", st[j].phone_number);
                break;
            case 6:
                printf("Enter the updated password : ");
-               scanf("%f", st[j].s_student);
+               scanf("%d", st[j].s_student);
                break;
          }
          printf("Records updated successfully");
