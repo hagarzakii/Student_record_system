@@ -1,6 +1,7 @@
 #include "input_output.h"
 #include <stdio.h>
-
+#include "student.h"
+#include "admin.h"
 
 
 <<<<<<< HEAD
