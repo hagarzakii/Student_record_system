@@ -41,7 +41,7 @@ void edit_yourDetail()
                 "3. ID Number\n"
                 "4. GPA\n"
                 "5. phone number\n"
-                "6. password\n")
+                "6. password\n");
          int c;
          scanf("%d", &c);
          switch(c) {
@@ -73,3 +73,4 @@ void edit_yourDetail()
          printf("Records updated successfully");
       }
    }
+}
