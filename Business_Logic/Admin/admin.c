@@ -18,7 +18,7 @@ void add_byadmin(){
     scanf("%d",&c);
     struct student *s;
     s=(struct student *) malloc (sizeof(struct student));
-    
+
     printf("now you enter the details of new students:\n");
 
     for(int i=0;i<c;++i)
@@ -149,15 +149,7 @@ for (int i = 0; i < numstudents; i++) {
     printf("Last Name: %s\n", st[i].lastName);
     printf("ID: %d\n", st[i].id_number);
     printf("GPA: %f\n", st[i].GPA);
-	
+
     printf("Phone Number: %d\n", st[i].phone_number);}
-    
-    
-void change_admin_password(char current_password[], char new_password[]) {
-    if (strcmp(current_password, admin_password) != 0) {
-        printf("Incorrect current password. Password not changed.\n");
-        return;
-    }
-    strcpy(admin_password, new_password);
-    printf("Admin password changed successfully!\n");
+
 }
