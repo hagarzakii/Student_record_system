@@ -1,7 +1,7 @@
 #ifndef STUDENTRECORDSYSTEM_STUDENT_H
 #define STUDENTRECORDSYSTEM_STUDENT_H
-void edit_student();
-void id_number();
+void edit_yourDetail();
+void viewRecord();
  struct student
 {
     char firstName[20];

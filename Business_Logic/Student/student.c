@@ -5,43 +5,8 @@
 void edit_student();
 void id_number();
 int i = 0;
- struct student
-{
-    char firstName[20];
-   char lastName[20];
-   int id_number;
-   float GPA;
-   int phone_number;
-  int s_pass;
-} st[500];
-//struct student st[500]={"amr","eziza",1000,2.79,01000};
-int main()
-{
-   int t;
-      printf("Enter the task that you want to perform\n");
-      printf("1. Find the details of a student using ID number\n");
-      printf("2. Update the details of an student\n");
-      printf("3. Exit\n");
-      scanf("%d", &t);
-      switch (t)
-      {
-      
-      case 1:
-          id_number();
-         break;
-      case 2:
-         edit_student();
-         break;
-         case 3:
-         printf("successful exit");
-         break;
-      default:
-           printf("successful exit");
-      }
-   return 0;
-}
-
-void id_number()
+ 
+void viewRecord()
 {
    int temp;
    int z;
@@ -58,7 +23,7 @@ void id_number()
          printf("The phone number is %d\n", st[i].phone_number);
       }
  }
-void edit_student()
+void edit_yourDetail()
 {
    int temp;
    int z;
