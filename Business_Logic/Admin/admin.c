@@ -15,8 +15,6 @@ void change_admin_password() {
         return;
     }
 	}
-
-/* i think this func is better
 void add_byadmin(){
     int c;
     printf("enter number of students you need to add\n");
@@ -29,15 +27,15 @@ void add_byadmin(){
     for(int i=0;i<c;++i)
     {
         printf("enter the first name:");
-        scanf("%s",s[i].name);
+        scanf("%s",s[i].firstName);
          printf("enter the last name:");
-        scanf("%s",s[i].last_name);
+        scanf("%s",s[i].lastName);
         printf("enter ID number:");
         scanf("%d",&s[i].id_number);
         printf("enter student GPA:");
-        scanf("%f",&s[i].gpa);
+        scanf("%f",&s[i].GPA);
          printf("enter student's new password:");
-        scanf("%u",&s[i].pass);
+        scanf("%u",&s[i].s_pass);
          printf("\n");
     }
         printf("\n details of all the new students are:\n");
@@ -52,24 +50,9 @@ void add_byadmin(){
         printf("\n");
     }
     return 0;
-}*/
-
-void addstudent()
-{
-   printf("Add the student's details\n\n");
-   printf("Enter the first name of the student\n");
-   scanf("%s", st[i].firstName);
-   printf("Enter the last name of the student\n");
-   scanf("%s", st[i].lastName);
-   printf("Enter the ID number of the student\n");
-   scanf("%d", &st[i].id_number);
-   printf("Enter the GPA of the student\n");
-   scanf("%f", &st[i].GPA);
-   printf("Enter phone number of the student\n");
-   scanf("%d", &st[i].phone_number);
-   printf("Records saved successfully");
-   return ;
 }
+
+
 void delete_student()
 {
    int temp;
