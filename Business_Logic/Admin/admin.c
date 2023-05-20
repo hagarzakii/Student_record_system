@@ -4,6 +4,9 @@
 void change_admin_password() {
     printf("Enter current password : ");
     scanf("%s",current_password);
+	if (strcmp(current_password, admin_password) != 0) {
+        printf("Incorrect current password. Password not changed.\n");
+        return;
   printf("Enter the new password : ");
     scanf("%s",new_password);
     if (strlen(new_password) < MIN_PASSWORD_LENGTH) {
