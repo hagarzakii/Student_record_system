@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include<stdio.h>
 #include <stdlib.h>
 #include "../Student/student.h"
@@ -7,6 +8,9 @@
 extern int i ;
 int numstudents=0; 
 extern char adminPassword[];
+=======
+
+>>>>>>> 47d11467b587faacef8757282bf71d59f56dd4ab
 
 void change_admin_password() {
     printf("Enter current password : ");
