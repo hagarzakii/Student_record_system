@@ -1,16 +1,12 @@
-<<<<<<< HEAD
 #include<stdio.h>
 #include <stdlib.h>
 #include "../Student/student.h"
-#include "../../Data_Access/Memory_Management/memory_management.h"
 #include "admin.h"
+#include "../../Data_Access/Memory_Management/memory_management.h"
 
 extern int i ;
 int numstudents=0; 
 extern char adminPassword[];
-=======
-
->>>>>>> 47d11467b587faacef8757282bf71d59f56dd4ab
 
 void change_admin_password() {
     printf("Enter current password : ");
@@ -78,12 +74,16 @@ void delete_student()
             st[k] = st[k + 1];
          }
         i--;
-      }
-   }
-   numstudents --;
-   free_student (&st[temp]);
+		numstudents --;
+   free_student(&st[j]);
    printf("The entered student's records deleted successfully");
    return ;
+      }
+   }
+  // numstudents --;
+   //free_student(&st[j]);
+   //printf("The entered student's records deleted successfully");
+   //return ;
 }
 void edit_student()
 {

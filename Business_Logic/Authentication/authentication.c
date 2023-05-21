@@ -1,4 +1,5 @@
 
+#include "authentication.h"
 #include <string.h>
 #include <stdio.h>
 #include "../Student/student.h"
@@ -53,9 +54,4 @@ void is_admin(){
         printf("Incorrect password\n");
         return;
     }
-<<<<<<< HEAD
 	}
-    
-=======
-    
->>>>>>> 47d11467b587faacef8757282bf71d59f56dd4ab

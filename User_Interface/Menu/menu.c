@@ -1,10 +1,8 @@
 
+#include "menu.h"
 #include <stdio.h>
-<<<<<<< HEAD
 #include "../../Business_Logic/Authentication/authentication.h"
 #include "../Input_Output/input_output.h"
-=======
->>>>>>> 47d11467b587faacef8757282bf71d59f56dd4ab
 int main(){
 int na;
 int a=0;  int t;
