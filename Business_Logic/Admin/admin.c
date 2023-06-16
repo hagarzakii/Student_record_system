@@ -10,7 +10,7 @@ char cpy_cAdminPassword[MAX_PASSWORD_LENGTH];
 char cpy_cCurrentPassword[MAX_PASSWORD_LENGTH];
 char cpy_cNewPassword[MAX_PASSWORD_LENGTH];
 
-void change_admin_password() {
+void BA_changeAdminPassword() {
     printf("Enter current password: ");
     scanf("%s", cpy_cCurrentPassword);
 
@@ -30,7 +30,7 @@ void change_admin_password() {
     strcpy(cpy_cAdminPassword, cpy_cNewPassword);
     printf("Password changed.\n");
 }
-void add_byadmin() {
+void BA_addByAdmin() {
     int nN;
     printf("Enter the number of students you need to add: ");
     scanf("%d", &nN);
@@ -70,7 +70,7 @@ void add_byadmin() {
     return;
 }
 
-void delete_student() {
+void BA_deleteStudent() {
     int nTemp;
     printf("Enter the ID number of the student: ");
     scanf("%d", &nTemp);
@@ -89,7 +89,7 @@ void delete_student() {
 
     printf("Error: No student record found with the entered ID number.\n");
 }
-void edit_student() {
+void BA_editStudent() {
     int nTemp;
     printf("Enter the ID number of the student: ");
     scanf("%d", &nTemp);
@@ -135,7 +135,7 @@ void edit_student() {
 
     printf("Error: No student record found with the entered ID number.\n");
 }
-void id_number()
+void BA_viewWithIdNumber()
 {
    int cpy_nTemp;
    printf("Enter the ID number of the student\n");
@@ -154,7 +154,7 @@ void id_number()
    }
  }
 
-void view_all_records() {
+void BA_viewAllRecords() {
     printf("\nAll Student Records:\n");
     for (int i = 0; i < cpy_nNumStudents; i++) {
         printf("Student %d:\n", i + 1);
