@@ -13,11 +13,11 @@ void id_number();
 
 
 //char admin_password[MAX_PASSWORD_LENGTH] = "1234";
-char current_password[MAX_PASSWORD_LENGTH];
+/*char current_password[MAX_PASSWORD_LENGTH];
 char new_password[MAX_PASSWORD_LENGTH];
 extern char adminPassword[] ;
 
-extern char admin_password[20];
+extern char admin_password[20];*/
 
 void change_admin_password();
 //void change_admin_password(char current_password[], char new_password[]);
