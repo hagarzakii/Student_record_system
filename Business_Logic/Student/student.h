@@ -1,15 +1,16 @@
 #ifndef STUDENTRECORDSYSTEM_STUDENT_H
 #define STUDENTRECORDSYSTEM_STUDENT_H
-void edit_yourDetail();
-void viewRecord();
- struct student
-{
-    char firstName[20];
-   char lastName[20];
-   int id_number;
-   float GPA;
-   int phone_number;
-  int s_pass;
-} st[500];
+void BSTUDENT_editYourDetail(int cpy_id , char password[20]);
+void BSTUDENT_viewRecord(int cpy_id , char password[20]);
+
+typedef struct{
+   char name[20];
+   int age;
+   int id;
+   float grade;
+   char password[20];
+} Student;
+
+Student students[500];
 
 #endif //STUDENTRECORDSYSTEM_STUDENT_H

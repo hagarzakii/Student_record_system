@@ -1,34 +1,34 @@
-
 #include "menu.h"
 #include <stdio.h>
 #include "../../Business_Logic/Authentication/authentication.h"
-#include "../Input_Output/input_output.h"
 int main(){
-int na;
-int a=0;  int t;
-while(1){
-printf("Please select number to choise you are admin or student\n" 
-       "1: for admin\n"
-       "2: for student\n");
-          scanf("%d",&na);
+int cpy_choice;
+ while(1){
+	 printf("Welcome in our system\n");
+       printf("Choose Admin mode or Student mode\n" 
+       "1: Admin mode\n"
+       "2: Student mode\n"
+	   "3: Exit\n" );
+        scanf("%d",&cpy_choice);
 
-switch(na){
-   case 1:  printf("Welcome in admin mode !\n");
-            is_admin();
-			chooseAdminTask();
-   //check admin function   
-    break;
+ switch(cpy_choice){
+   case 1:   printf("Welcome in Admin mode !\n");
+             BAUTHENTICATION_checkAdminPassword();
+             break;
 
-      case 2:
-	  printf("Welcome in student mode !\n");
-	  check_user();
-	  chooseStudentTask();
-     // check student function
-      break;
+   case 2:   printf("Welcome in student mode !\n");
+             BAUTHENTICATION_checkStudentPassword();
+             break;
+			 
+   case 3:   printf("Exiting..");
+             return 0;
 
-     default: break;
+   default: 
+   break;
 }
 }
 }
+
+
 
 

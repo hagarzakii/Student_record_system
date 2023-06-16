@@ -2,76 +2,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void edit_student();
-void id_number();
-int i = 0;
+#include "../../Data_Access/File_Access/file_access.h"
+
+extern int cpy_numStudents;
  
-void viewRecord()
+void BSTUDENT_viewRecord(int cpy_temp , char z[20])
 {
-   int temp;
-   int z;
-   printf("Enter the ID number of the student\n");
-   scanf("%d", &temp);
-   printf("Enter the password number of the student\n");
-   scanf("%d", &z);
-      if (temp == st[i].id_number && z==st[i].s_pass)
+   DFILE_readNumberOfStudents();
+   DFILE_readStudentData();
+   for(int cpy_counter =0 ; cpy_counter < cpy_numStudents ; cpy_counter++)
+   {
+      if (cpy_temp == students[cpy_counter].id && (strcmp(students[cpy_counter].password , z)==0))
       {
-         printf("The student's details are\n");
-         printf("The first name is %s\n", st[i].firstName);
-         printf("The last name is %s\n", st[i].lastName);
-         printf("The GPA is %f\n", st[i].GPA);
-         printf("The phone number is %d\n", st[i].phone_number);
+         printf("The details are\n");
+         printf("Name is %s\n", students[cpy_counter].name);
+         printf("Age is %d\n", students[cpy_counter].age);
+         printf("Grade is %.2f\n", students[cpy_counter].grade);
       }
+   }
 	  return ;
  }
-void edit_yourDetail()
+void BSTUDENT_editYourDetail(int cpy_temp , char z[20])
 {
-   int temp;
-   int z;
-   printf("Enter the ID number of the student\n");
-   scanf("%d", &temp);
-   printf("Enter the password number of the student\n");
-   scanf("%d", &z);
- 
-   for (int j = 0; j < i; j++)
+   DFILE_readNumberOfStudents();
+   DFILE_readStudentData();
+   
+   for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++)
    {
-      if (temp == st[j].id_number && z==st[j].s_pass)
+      if (cpy_temp == students[cpy_counter].id && (strcmp(students[cpy_counter].password , z)==0))
       {
-         printf("1. First Name\n"
-                "2. Last Name\n"
-                "3. ID Number\n"
-                "4. GPA\n"
-                "5. phone number\n"
-                "6. password\n");
-         int c;
-         scanf("%d", &c);
-         switch(c) {
+         printf("1. Edit your Name\n"
+                "2. Edit your Password\n");
+         int cpy_choice;
+         scanf("%d", &cpy_choice);
+         switch(cpy_choice) {
             case 1:
                printf("Enter the updated first name : ");
-               scanf("%s", st[j].firstName);
+               scanf("%s", students[cpy_counter].name);
                break;
             case 2:
-               printf("Enter the updated last name : ");
-               scanf("%s", st[j].lastName);
-               break;
-            case 3:
-               printf("Enter the updated ID number : ");
-               scanf("%d", st[j].id_number);
-               break;
-            case 4:
-               printf("Enter the updated GPA : ");
-               scanf("%f", st[j].GPA);
-               break;
-            case 5:
-               printf("Enter the updated phone number : ");
-               scanf("%d", st[j].phone_number);
-               break;
-           case 6:
                printf("Enter the updated password : ");
-               scanf("%d", st[j].s_pass);
-               break;
+               scanf("%s", students[cpy_counter].password);
+			   break;
          }
-         printf("Records updated successfully");
+         printf("Records updated successfully\n");
+		 DFILE_writeStudentData();
       }
    }
    return ;

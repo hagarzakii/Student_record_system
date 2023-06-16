@@ -1,169 +1,141 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../Student/student.h"
 #include "admin.h"
 #include "../../Data_Access/Memory_Management/memory_management.h"
+#include "../../Data_Access/File_Access/file_access.h"
 
-//extern int i ;
-int cpy_nNumStudents=0;
-char cpy_cAdminPassword[MAX_PASSWORD_LENGTH];
-char cpy_cCurrentPassword[MAX_PASSWORD_LENGTH];
-char cpy_cNewPassword[MAX_PASSWORD_LENGTH];
+int cpy_numStudents=0; 
+extern char adminPassword[];
 
-void BA_changeAdminPassword() {
-    printf("Enter current password: ");
-    scanf("%s", cpy_cCurrentPassword);
+void BADMIN_changeAdminPassword() {
+	DFILE_readAdminPassword();
+	static char currentPassword[MAX_PASSWORD_LENGTH];
+	static char newPassword[MAX_PASSWORD_LENGTH];
 
-    if (strcmp(cpy_cCurrentPassword, cpy_cAdminPassword) != 0) {
-        printf("Incorrect current password. Password not changed.\n");
-        return;
-    }
+	printf("Enter current password : ");
+	scanf("%s",currentPassword);
+	if (strcmp(currentPassword, adminPassword) != 0)
+	{
+	printf("Incorrect current password. Password not changed.\n");
+	}
+	else
+	{
+	printf("Enter the new password : ");
+	scanf("%s",newPassword);
+	printf("Password updated successfully\n");
+	strcpy(adminPassword, newPassword);
+	strcpy(currentPassword, newPassword);
+	DFILE_writeAdminPassword();
+	}
+	return ;
+	}
 
-    printf("Enter the new password: ");
-    scanf("%s", cpy_cNewPassword);
+void BADMIN_addNewStudent(){
+	
+	DFILE_readNumberOfStudents();
+	DFILE_readStudentData();
 
-    if (strlen(cpy_cNewPassword) < MIN_PASSWORD_LENGTH) {
-        printf("Error: password must be at least %d characters long.\n", MIN_PASSWORD_LENGTH);
-        return;
-    }
+	void DMEMORY_allocateStudent();
 
-    strcpy(cpy_cAdminPassword, cpy_cNewPassword);
-    printf("Password changed.\n");
-}
-void BA_addByAdmin() {
-    int nN;
-    printf("Enter the number of students you need to add: ");
-    scanf("%d", &nN);
+	printf("Enter the details of the new student:\n");
 
-    struct student *s;
-    s = (struct student *) malloc(nN * sizeof(struct student));
+	int cpy_studentNumber = cpy_numStudents ;
 
-    printf("Enter the details of the new students:\n");
+	printf("Enter the name:");
+	scanf("%s",students[cpy_studentNumber].name);
+	printf("Enter the age:");
+	scanf("%d",&students[cpy_studentNumber].age);
+	printf("Enter ID number:");
+	scanf("%d",&students[cpy_studentNumber].id);
+	printf("Enter student Grade:");
+	scanf("%f",&students[cpy_studentNumber].grade);
+	printf("enter student's new password:");
+	scanf("%s",students[cpy_studentNumber].password);
+	printf("\n");
+	printf("Student added successfully\n");
+	cpy_numStudents ++ ;
+	DFILE_writeStudentData ();
+	DFILE_writeNumberOfStudents();
+	}
 
-    for (int i = 0; i < nN; ++i) {
-        printf("Enter the first name: ");
-        scanf("%s", s[i].firstName);
-        printf("Enter the last name: ");
-        scanf("%s", s[i].lastName);
-        printf("Enter the ID number: ");
-        scanf("%d", &s[i].id_number);
-        printf("Enter the student GPA: ");
-        scanf("%f", &s[i].GPA);
-        printf("Enter the student's new password: ");
-        scanf("%u", &s[i].s_pass);
-        printf("\n");
-    }
-
-    printf("Details of all the new students are:\n");
-
-    for (int i = 0; i < nN; ++i) {
-        printf("Student first name: %s\n", s[i].firstName);
-        printf("Student last name: %s\n", s[i].lastName);
-        printf("Student ID number: %d\n", s[i].id_number);
-        printf("Student GPA: %.2f\n", s[i].GPA);
-        printf("Student password: %u\n", s[i].s_pass);
-        printf("\n");
-    }
-
-    cpy_nNumStudents += nN;
-    free(s);
-    return;
-}
-
-void BA_deleteStudent() {
-    int nTemp;
-    printf("Enter the ID number of the student: ");
-    scanf("%d", &nTemp);
-
-    for (int j = 0; j < cpy_nNumStudents; j++) {
-        if (nTemp == st[j].id_number) {
-            free_student(&st[j]);
-            for (int k = j; k < cpy_nNumStudents - 1; k++) {
-                st[k] = st[k + 1];
-            }
-            cpy_nNumStudents--;
-            printf("The entered student's records have been deleted successfully.\n");
-            return;
-        }
-    }
-
-    printf("Error: No student record found with the entered ID number.\n");
-}
-void BA_editStudent() {
-    int nTemp;
-    printf("Enter the ID number of the student: ");
-    scanf("%d", &nTemp);
-
-    for (int j = 0; j < cpy_nNumStudents; j++) {
-        if (nTemp == st[j].id_number) {
-            printf("1. First Name\n"
-                   "2. Last Name\n"
-                   "3. ID Number\n"
-                   "4. GPA\n"
-                   "5. Phone Number\n");
-            int nC;
-            scanf("%d", &nC);
-            switch(nC) {
-                case 1:
-                    printf("Enter the updated first name: ");
-                    scanf("%s", st[j].firstName);
-                    break;
-                case 2:
-                    printf("Enter the updated last name: ");
-                    scanf("%s", st[j].lastName);
-                    break;
-                case 3:
-                    printf("Enter the updated ID number: ");
-                    scanf("%d", &st[j].id_number);
-                    break;
-                case 4:
-                    printf("Enter the updated GPA: ");
-                    scanf("%f", &st[j].GPA);
-                    break;
-                case 5:
-                    printf("Enter the updated phone number: ");
-                    scanf("%d", &st[j].phone_number);
-                    break;
-                default:
-                    printf("Invalid choice.\n");
-                    return;
-            }
-            printf("Records updated successfully.\n");
-            return;
-        }
-    }
-
-    printf("Error: No student record found with the entered ID number.\n");
-}
-void BA_viewWithIdNumber()
+void BADMIN_deleteStudent()
 {
-   int cpy_nTemp;
-   printf("Enter the ID number of the student\n");
-   scanf("%d", &cpy_nTemp);
-   for (int i=0 ; i<cpy_nNumStudents ; i++)
-   {
-      if (cpy_nTemp == st[i].id_number)
-      {
-         printf("The student's details for ID number %d are:\n", cpy_nTemp);
-         printf("The first name is %s\n", st[i].firstName);
-         printf("The last name is %s\n", st[i].lastName);
-         printf("The GPA is %f\n", st[i].GPA);
-         printf("The phone number is %d\n", st[i].phone_number);
-		 break;
-      }
-   }
- }
+	DFILE_readStudentData();
+	DFILE_readNumberOfStudents();
+	int cpy_temp;
+	printf("Enter the ID number of the student\n");
+	scanf("%d", &cpy_temp);
+	for (int cpy_firstCounter = 0; cpy_firstCounter < cpy_numStudents; cpy_firstCounter++)
+	{
+	if (cpy_temp == students[cpy_firstCounter].id)
+	{
+	for (int cpy_secondCounter = cpy_firstCounter; cpy_secondCounter < 499; cpy_secondCounter++)
+	{
+	students[cpy_secondCounter] = students[cpy_secondCounter + 1];
+	}
+	cpy_numStudents --;
+	DMEMORY_freeStudent(&students[cpy_firstCounter]);
+	DFILE_writeStudentData ();
+	DFILE_writeNumberOfStudents();
+	printf("The entered student's records are deleted successfully\n");
+	}
+	}
+}
+void BADMIN_editStudentGrade()
+{
+	DFILE_readStudentData();
+	DFILE_readNumberOfStudents();
+	int cpy_temp;
+	printf("Enter the ID number of the student\n");
+	scanf("%d", &cpy_temp);
+	for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++)
+	{
+	if (cpy_temp == students[cpy_counter].id)
+	{
+	printf("Enter the updated Grade : ");
+	scanf("%f", &students[cpy_counter].grade);
+	printf("Records updated successfully\n");
+	DFILE_writeStudentData();
+	}
+	}
+	return ;
+}
+void BADMIN_findStudentDetails()
+{
+	DFILE_readStudentData();
+	DFILE_readNumberOfStudents();
+	int cpy_temp;
+	printf("Enter the ID number of the student\n");
+	scanf("%d", &cpy_temp);
+	for (int cpy_counter=0 ; cpy_counter<cpy_numStudents ; cpy_counter++)
+	{
+	if (cpy_temp == students[cpy_counter].id)
+	{
+	printf("The student's details are\n");
+	printf("The Name is %s\n", students[cpy_counter].name);
+	printf("The age is %d\n", students[cpy_counter].age);
+	printf("The Grade is %.2f\n", students[cpy_counter].grade);
+	break;
+	}
+	}
+}
 
-void BA_viewAllRecords() {
+
+void BADMIN_viewAllRecords() 
+{
+	DFILE_readStudentData();
+	DFILE_readNumberOfStudents();
     printf("\nAll Student Records:\n");
-    for (int i = 0; i < cpy_nNumStudents; i++) {
-        printf("Student %d:\n", i + 1);
-        printf("First Name: %s\n", st[i].firstName);
-        printf("Last Name: %s\n", st[i].lastName);
-        printf("ID Number: %d\n", st[i].id_number);
-        printf("GPA: %f\n", st[i].GPA);
-        printf("Phone Number: %d\n", st[i].phone_number);
-        printf("\n");
+    for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++) {
+	printf("*****************************************************\n");
+    printf("Student %d:\n", cpy_counter + 1);
+    printf("Name: %s\n", students[cpy_counter].name);
+    printf("Age: %d\n", students[cpy_counter].age);
+    printf("ID: %d\n", students[cpy_counter].id);
+    printf("Grade: %.2f\n", students[cpy_counter].grade);
+	printf("*****************************************************\n");
     }
-    return ;
+return ;
 }

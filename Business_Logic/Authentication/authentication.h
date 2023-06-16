@@ -1,8 +1,7 @@
 #ifndef STUDENTRECORDSYSTEM_AUTHENTICATION_H
 #define STUDENTRECORDSYSTEM_AUTHENTICATION_H
 
-void is_admin();
-
-void check_user();
+void BAUTHENTICATION_checkAdminPassword();
+void BAUTHENTICATION_checkStudentPassword();
 
 #endif //STUDENTRECORDSYSTEM_AUTHENTICATION_H

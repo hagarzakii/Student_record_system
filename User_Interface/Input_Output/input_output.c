@@ -3,62 +3,69 @@
 #include "../../Business_Logic/Admin/admin.h"
 #include "../../Business_Logic/Student/student.h"
 
-void chooseAdminTask()
+void UIO_chooseAdminTask()
 {
-    int choice;
+	while(1){
+    int cpy_choice;
     printf("1- Edit Admin Password\n");
     printf("2- Add a new student detail\n");
     printf("3- Find the details of a student using ID number\n");
-    printf("4- Delete the details of an student\n");
-    printf("5- Update the details of an student\n");
-    printf("6- Exit\n");
+    printf("4- Delete the details of a student\n");
+    printf("5- Update the details of a student\n");
+	printf("6- View details of all student\n");
+    printf("7- Go back\n");
     printf("Enter the task number : ");
-    scanf("%d",&choice);
-    switch(choice)
+    scanf("%d",&cpy_choice);
+    switch(cpy_choice)
     {
-    case 1:
-        change_admin_password();
+      case 1:
+        BADMIN_changeAdminPassword();
         break;
-     case 2:
-         add_byadmin();
+      case 2:
+        BADMIN_addNewStudent();
          break;
       case 3:
-          id_number();
+        BADMIN_findStudentDetails();
          break;
-         case 4:
-        delete_student();
+      case 4:
+        BADMIN_deleteStudent();
          break;
       case 5:
-         edit_student();
+        BADMIN_editStudentGrade();
          break;
-         case 6:
-         printf("successful exit");
+      case 6:
+          BADMIN_viewAllRecords();
          break;
       default:
-           printf("Invalid Input");
+           break;
     }
-
+	if (cpy_choice == 7)
+		break;
+	}
 }
-void chooseStudentTask()
+
+
+void UIO_chooseStudentTask(int cpy_id , char password[20])
 {
-  int Studentchoice;
+  while(1){
+  int cpy_choice;
+  
    printf("1- Edit your details\n");
    printf("2- View your record\n");
-   printf("3- Exit\n");
-   scanf("%d",&Studentchoice);
-    switch(Studentchoice)
+   printf("3- Go back\n");
+   scanf("%d",&cpy_choice);
+    switch(cpy_choice)
     {
-    case 1:
-         edit_yourDetail();
+     case 1:
+         BSTUDENT_editYourDetail(cpy_id , password);
         break;
      case 2:
-         viewRecord();
+         BSTUDENT_viewRecord(cpy_id , password);
          break;
-      case 3:
-         printf("successful exit");
-         break;
-      default:
-        printf("Invalid Input");
-
+     default:
+        break;
+    }
+	if (cpy_choice == 3)
+		break;
 }
 }

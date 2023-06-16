@@ -1,57 +1,76 @@
-
 #include "authentication.h"
 #include <string.h>
 #include <stdio.h>
 #include "../Student/student.h"
-// Check the username and password entered by the user and determine whether the user is an admin or a student.
+#include "../../Data_Access/File_Access/file_access.h"
+#include "../../User_Interface/Input_Output/input_output.h"
 
 char adminPassword[] = "1234";
-int attempts = 3;
-extern int numstudents;
+extern int cpy_numStudents;
 
-void is_admin(){
+void BAUTHENTICATION_checkAdminPassword(){
 	    char password[20];
-		
-        while (attempts >0) {
+		DFILE_readAdminPassword();
+		int cpy_attempts = 3;
+        while (cpy_attempts >0) 
+		{
         printf("Enter admin password: ");
         scanf("%s", password);
-          if (strcmp(password, adminPassword) == 0) {
+          if (strcmp(password, adminPassword) == 0) 
+		{
             printf("Access granted!\n");
+			UIO_chooseAdminTask();
             break;
-        } else {
-            printf("Incorrect password. %d attempts remaining.\n", attempts -1);
-            attempts--;
         }
-    }
-        if (attempts == 0) {
-        printf("Maximum attempts reached.\n Exiting");
-        return;
-    }
-	}
-    void check_user() {
-		//we need counter for number of students
-	int id;
-    int password;
+		else 
+		{
+            printf("Incorrect password. %d attempts remaining.\n", cpy_attempts -1);
+            cpy_attempts--;
+        }
+        }
+        if (cpy_attempts == 0) {
+			printf("Maximum attempts reached.\nExiting\n");
+			return;
+        }
+	    }
+    void BAUTHENTICATION_checkStudentPassword() { 
+	
+	DFILE_readStudentData();
+	DFILE_readNumberOfStudents();
+		
+	int cpy_id;
+    char password[20];
 	
 	printf("\nEnter your ID: ");
-    scanf("%d", &id);
+    scanf("%d", &cpy_id);
 
-   struct student* user = NULL;
-    for (int i = 0; i < numstudents; i++) {
-        if (st[i].id_number == id) {
-            user =& st[i];
-            break;
-        }
-    }
-        if (user == NULL) {
-        printf("User not found\n");
-        return;
-    }
-    printf("Enter your password: ");
-    scanf("%s", password);
+    Student* user = NULL;
+    for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++) 
+	{
+        if (students[cpy_counter].id == cpy_id) 
+		{
+            user =& students[cpy_counter];
+			int cpy_attempts = 3;
+	        while(cpy_attempts > 0){  
+            printf("Enter your password: ");
+            scanf("%s", password);
 
-    if (password == user->s_pass) {
-        printf("Incorrect password\n");
-        return;
+    if (strcmp(user->password , password)) {
+        printf("Incorrect password %d attempts remaining\n" , cpy_attempts-1);
     }
+	else 
+	{
+		 UIO_chooseStudentTask(cpy_id , password);
+		 
+		 return;
 	}
+	cpy_attempts -- ;
+	}
+	}
+	 if (user == NULL) 
+		{
+			printf("User not found\n");
+			break;
+        }
+	}
+}
