@@ -24,8 +24,11 @@ void BSTUDENT_viewRecord(int cpy_temp , char z[20])
  }
 void BSTUDENT_editYourDetail(int cpy_temp , char z[20])
 {
-   DFILE_readNumberOfStudents();
+DFILE_readNumberOfStudents();
    DFILE_readStudentData();
+   
+   char buffer[20];
+   char currentPasswordBuffer [20] ; 
    
    for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++)
    {
@@ -37,17 +40,44 @@ void BSTUDENT_editYourDetail(int cpy_temp , char z[20])
          scanf("%d", &cpy_choice);
          switch(cpy_choice) {
             case 1:
-               printf("Enter the updated first name : ");
-               scanf("%s", students[cpy_counter].name);
+               printf("Enter the updated name : ");
+               scanf("%s", buffer);
+			   if(strcmp(buffer , students[cpy_counter].name) == 0)
+			   {
+				   printf("You entered your current name \nName unchanged\n");
+			   }else{
+			   strcpy(students[cpy_counter].name , buffer);
+			   printf("Name updated successfully\n");
+			   }
                break;
             case 2:
+			   printf("Enter your current password :");
+			   scanf("%s", currentPasswordBuffer);
+			   if(strcmp(currentPasswordBuffer , students[cpy_counter].password) != 0)
+			   {
+				   printf("Incorrect current password. Password not changed.\n");
+			   }
+			   else{
                printf("Enter the updated password : ");
-               scanf("%s", students[cpy_counter].password);
-			   break;
+               scanf("%s", buffer);
+				while ( strlen(buffer) < 4 )
+				{
+					printf("Password too short *it should be atleast 4 characters*\n");
+					printf("Enter the updated password : ");
+                    scanf("%s", buffer);
+				}
+				if(strcmp(buffer , students[cpy_counter].password) == 0)
+				{
+				printf("You entered your current password \nPassword unchanged\n");
+				}
+				else{
+			   strcpy(students[cpy_counter].password , buffer);
+			   printf("Password updated successfully\n");
+				}
+			   }
+			   }
          }
-         printf("Records updated successfully\n");
 		 DFILE_writeStudentData();
       }
-   }
    return ;
 }

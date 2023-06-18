@@ -60,9 +60,8 @@ void BAUTHENTICATION_checkAdminPassword(){
     }
 	else 
 	{
+		 printf("Access granted!\n");
 		 UIO_chooseStudentTask(cpy_id , password);
-		 
-		 return;
 	}
 	cpy_attempts -- ;
 	}

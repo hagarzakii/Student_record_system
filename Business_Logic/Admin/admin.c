@@ -11,8 +11,8 @@ extern char adminPassword[];
 
 void BADMIN_changeAdminPassword() {
 	DFILE_readAdminPassword();
-	static char currentPassword[MAX_PASSWORD_LENGTH];
-	static char newPassword[MAX_PASSWORD_LENGTH];
+	char currentPassword[MAX_PASSWORD_LENGTH];
+	char newPassword[MAX_PASSWORD_LENGTH];
 
 	printf("Enter current password : ");
 	scanf("%s",currentPassword);
@@ -24,10 +24,21 @@ void BADMIN_changeAdminPassword() {
 	{
 	printf("Enter the new password : ");
 	scanf("%s",newPassword);
+	while(strlen(newPassword) < 4)
+	{
+		printf("Password too short *it should be atleast 4 characters*\n");
+		printf("Enter the new password : ");
+	    scanf("%s",newPassword);
+	}
+	if(strcmp(newPassword, adminPassword) == 0)
+	{
+		printf("You entered your current password \nPassword unchanged\n");
+	}else
+	{
 	printf("Password updated successfully\n");
 	strcpy(adminPassword, newPassword);
-	strcpy(currentPassword, newPassword);
 	DFILE_writeAdminPassword();
+	}
 	}
 	return ;
 	}
@@ -65,12 +76,14 @@ void BADMIN_deleteStudent()
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+	int cpy_found=0;
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_firstCounter = 0; cpy_firstCounter < cpy_numStudents; cpy_firstCounter++)
 	{
 	if (cpy_temp == students[cpy_firstCounter].id)
 	{
+	cpy_found ++ ;	
 	for (int cpy_secondCounter = cpy_firstCounter; cpy_secondCounter < 499; cpy_secondCounter++)
 	{
 	students[cpy_secondCounter] = students[cpy_secondCounter + 1];
@@ -82,12 +95,18 @@ void BADMIN_deleteStudent()
 	printf("The entered student's records are deleted successfully\n");
 	}
 	}
+	if(cpy_found == 0)
+	{
+		printf("Student not found\n");
+	}
 }
 void BADMIN_editStudentGrade()
 {
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+	float buffer ;
+	int cpy_found = 0;
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++)
@@ -95,10 +114,23 @@ void BADMIN_editStudentGrade()
 	if (cpy_temp == students[cpy_counter].id)
 	{
 	printf("Enter the updated Grade : ");
-	scanf("%f", &students[cpy_counter].grade);
-	printf("Records updated successfully\n");
+    scanf("%f", &buffer);
+	if(buffer == students[cpy_counter].grade)
+    {
+	    printf("You entered the current grade \nGrade unchanged\n");
+	}
+	else
+	{
+		students[cpy_counter].grade = buffer;
+		printf("Grade updated successfully\n");
+    }
+	cpy_found ++ ;
 	DFILE_writeStudentData();
 	}
+	}
+	if(cpy_found == 0)
+	{
+		printf("Student not found\n");
 	}
 	return ;
 }
@@ -107,6 +139,7 @@ void BADMIN_findStudentDetails()
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+	int cpy_found=0;
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_counter=0 ; cpy_counter<cpy_numStudents ; cpy_counter++)
@@ -117,9 +150,14 @@ void BADMIN_findStudentDetails()
 	printf("The Name is %s\n", students[cpy_counter].name);
 	printf("The age is %d\n", students[cpy_counter].age);
 	printf("The Grade is %.2f\n", students[cpy_counter].grade);
-	break;
+	cpy_found ++ ;
 	}
 	}
+	if(cpy_found == 0)
+	{
+		printf("Student not found\n");
+	}
+	return ;
 }
 
 

@@ -10,14 +10,14 @@ void DFILE_writeStudentData ()
 {
 	FILE * fileWrite ;
 	fileWrite = fopen("StudentsData.bin" , "wb" );
-	fwrite(& students , sizeof(Student) , 1 , fileWrite);
+	fwrite(& students , sizeof(Student) , 500 , fileWrite);
 	fclose(fileWrite);	
 }
 void DFILE_readStudentData()
 {
 	FILE * fileRead ;
 	fileRead = fopen ("StudentsData.bin" , "rb");
-	fread(& students , sizeof(Student) , 1 , fileRead);
+	fread(& students , sizeof(Student) , 500 , fileRead);
 	fclose(fileRead);
 }
 void DFILE_writeNumberOfStudents()
