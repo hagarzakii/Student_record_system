@@ -105,7 +105,7 @@ void BADMIN_deleteStudent()
 	if (cpy_temp == students[cpy_firstCounter].id)
 	{
 	cpy_found ++ ;	
-	for (int cpy_secondCounter = cpy_firstCounter; cpy_secondCounter < 499; cpy_secondCounter++)
+	for (int cpy_secondCounter = cpy_firstCounter; cpy_secondCounter < cpy_numStudents; cpy_secondCounter++)
 	{
 	students[cpy_secondCounter] = students[cpy_secondCounter + 1];
 	}
