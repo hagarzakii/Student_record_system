@@ -60,6 +60,15 @@ void BADMIN_addNewStudent(){
 	scanf("%d",&students[cpy_studentNumber].age);
 	printf("Enter ID number:");
 	scanf("%d",&students[cpy_studentNumber].id);
+	for(int cpy_counter = 0 ; cpy_counter < cpy_numStudents ; cpy_counter ++)
+	{
+		if(students[cpy_studentNumber].id == students[cpy_counter].id)
+		{
+			printf ("This id already exists\n");
+			printf("Enter ID number:");
+	        scanf("%d",&students[cpy_studentNumber].id);
+		}
+	}		
 	printf("Enter student Grade:");
 	scanf("%f",&students[cpy_studentNumber].grade);
 	while( students[cpy_studentNumber].grade < 0 || students[cpy_studentNumber].grade > 100 )
