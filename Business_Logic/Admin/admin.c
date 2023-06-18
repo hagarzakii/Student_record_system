@@ -105,8 +105,12 @@ void BADMIN_editStudentGrade()
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+<<<<<<< HEAD
 	float buffer ;
 	int cpy_found = 0;
+=======
+	int cpy_found=0;
+>>>>>>> 06ee540a207c4ea5c00ca5b8e4af13a51011c00e
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++)
@@ -114,6 +118,7 @@ void BADMIN_editStudentGrade()
 	if (cpy_temp == students[cpy_counter].id)
 	{
 	printf("Enter the updated Grade : ");
+<<<<<<< HEAD
     scanf("%f", &buffer);
 	if(buffer == students[cpy_counter].grade)
     {
@@ -125,6 +130,11 @@ void BADMIN_editStudentGrade()
 		printf("Grade updated successfully\n");
     }
 	cpy_found ++ ;
+=======
+	scanf("%f", &students[cpy_counter].grade);
+	cpy_found ++ ;
+	printf("Records updated successfully\n");
+>>>>>>> 06ee540a207c4ea5c00ca5b8e4af13a51011c00e
 	DFILE_writeStudentData();
 	}
 	}
