@@ -24,7 +24,7 @@ void BSTUDENT_viewRecord(int cpy_temp , char z[20])
  }
 void BSTUDENT_editYourDetail(int cpy_temp , char z[20])
 {
-DFILE_readNumberOfStudents();
+   DFILE_readNumberOfStudents();
    DFILE_readStudentData();
    
    char buffer[20];

@@ -9,7 +9,7 @@
 int cpy_numStudents=0; 
 extern char adminPassword[];
 
-void BADMIN_changeAdminPassword() {
+void BADMIN_changeAdminPassword(){
 	DFILE_readAdminPassword();
 	char currentPassword[MAX_PASSWORD_LENGTH];
 	char newPassword[MAX_PASSWORD_LENGTH];
