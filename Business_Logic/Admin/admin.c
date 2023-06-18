@@ -65,12 +65,14 @@ void BADMIN_deleteStudent()
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+	int cpy_found=0;
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_firstCounter = 0; cpy_firstCounter < cpy_numStudents; cpy_firstCounter++)
 	{
 	if (cpy_temp == students[cpy_firstCounter].id)
 	{
+	cpy_found ++ ;	
 	for (int cpy_secondCounter = cpy_firstCounter; cpy_secondCounter < 499; cpy_secondCounter++)
 	{
 	students[cpy_secondCounter] = students[cpy_secondCounter + 1];
@@ -82,12 +84,17 @@ void BADMIN_deleteStudent()
 	printf("The entered student's records are deleted successfully\n");
 	}
 	}
+	if(cpy_found == 0)
+	{
+		printf("Student not found\n");
+	}
 }
 void BADMIN_editStudentGrade()
 {
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+	int cpy_found=0;
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_counter = 0; cpy_counter < cpy_numStudents; cpy_counter++)
@@ -96,9 +103,14 @@ void BADMIN_editStudentGrade()
 	{
 	printf("Enter the updated Grade : ");
 	scanf("%f", &students[cpy_counter].grade);
+	cpy_found ++ ;
 	printf("Records updated successfully\n");
 	DFILE_writeStudentData();
 	}
+	}
+	if(cpy_found == 0)
+	{
+		printf("Student not found\n");
 	}
 	return ;
 }
@@ -107,6 +119,7 @@ void BADMIN_findStudentDetails()
 	DFILE_readStudentData();
 	DFILE_readNumberOfStudents();
 	int cpy_temp;
+	int cpy_found=0;
 	printf("Enter the ID number of the student\n");
 	scanf("%d", &cpy_temp);
 	for (int cpy_counter=0 ; cpy_counter<cpy_numStudents ; cpy_counter++)
@@ -117,9 +130,14 @@ void BADMIN_findStudentDetails()
 	printf("The Name is %s\n", students[cpy_counter].name);
 	printf("The age is %d\n", students[cpy_counter].age);
 	printf("The Grade is %.2f\n", students[cpy_counter].grade);
-	break;
+	cpy_found ++ ;
 	}
 	}
+	if(cpy_found == 0)
+	{
+		printf("Student not found\n");
+	}
+	return ;
 }
 
 
