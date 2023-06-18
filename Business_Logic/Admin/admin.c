@@ -62,12 +62,24 @@ void BADMIN_addNewStudent(){
 	scanf("%d",&students[cpy_studentNumber].id);
 	printf("Enter student Grade:");
 	scanf("%f",&students[cpy_studentNumber].grade);
-	printf("enter student's new password:");
+	while( students[cpy_studentNumber].grade < 0 || students[cpy_studentNumber].grade > 100 )
+	{
+		printf("The Grade must be between 0 and 100\n");
+		printf("Enter student Grade:");
+	    scanf("%f",&students[cpy_studentNumber].grade);
+	}
+	printf("Enter student's new password:");
 	scanf("%s",students[cpy_studentNumber].password);
+	while(strlen(students[cpy_studentNumber].password) < 4 )
+	{
+		printf("The password should be atleast 4 characters\n");
+		printf("Enter student's new password:");
+	    scanf("%s",students[cpy_studentNumber].password);
+	}
 	printf("\n");
 	printf("Student added successfully\n");
+	DFILE_writeStudentData();
 	cpy_numStudents ++ ;
-	DFILE_writeStudentData ();
 	DFILE_writeNumberOfStudents();
 	}
 
@@ -121,6 +133,12 @@ void BADMIN_editStudentGrade()
 	}
 	else
 	{
+		while( buffer < 0 ||buffer > 100 )
+	{
+		printf("The Grade must be between 0 and 100\n");
+		printf("Enter the updated Grade : ");
+        scanf("%f", &buffer);
+	}
 		students[cpy_counter].grade = buffer;
 		printf("Grade updated successfully\n");
     }
