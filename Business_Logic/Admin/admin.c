@@ -48,7 +48,7 @@ void BADMIN_addNewStudent(){
 	DFILE_readNumberOfStudents();
 	DFILE_readStudentData();
 
-	void DMEMORY_allocateStudent();
+	DMEMORY_allocateStudent();
 
 	printf("Enter the details of the new student:\n");
 
@@ -67,6 +67,7 @@ void BADMIN_addNewStudent(){
 			printf ("This id already exists\n");
 			printf("Enter ID number:");
 	        scanf("%d",&students[cpy_studentNumber].id);
+			cpy_counter = 0;
 		}
 	}		
 	printf("Enter student Grade:");
